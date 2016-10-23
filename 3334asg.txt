@@ -18,7 +18,11 @@ Question 3:
   denote y as the ciphered text
   x = y ^ k3 (mod k2)
   k3 is k1's modular inverse
-  
+
 Question 4:
+
+  
+Question 6:
   a). 29*35 (mod 78) = 1
-  b). 
+  b). 	5*3578 (mod 5963) = 1
+	2266^3578 (mod 5963) = ? math error
