@@ -1,0 +1,24 @@
+Question1:
+13104584 + 3334 mod 26 = 18
+CRYPTOGRAPHYISINTERESTING
+UJQHLGYJSHZQAKAFLWJWKLAFY
+
+Question2:
+  a): RPRCTOGT
+  b): TPWTORFGHAKWKQHQODOGYDHQBV
+  
+    The square is:    	
+      R P C T O
+      G A B D E
+      F H I K L
+      M N Q S U
+      V W X Y Z
+      
+Question 3:
+  denote y as the ciphered text
+  x = y ^ k3 (mod k2)
+  k3 is k1's modular inverse
+  
+Question 4:
+  a). 29*35 (mod 78) = 1
+  b). 
