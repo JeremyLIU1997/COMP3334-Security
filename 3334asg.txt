@@ -21,6 +21,8 @@ Question 3:
 
 Question 4:
 
+Question 5:
+
   
 Question 6:
   a). 29*35 (mod 78) = 1
