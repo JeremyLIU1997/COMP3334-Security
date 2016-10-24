@@ -28,3 +28,17 @@ Question 6:
   a). 29*35 (mod 78) = 1
   b). 	5*3578 (mod 5963) = 1
 	2266^3578 (mod 5963) = ? math error
+
+Question 7:
+
+	a):A "normal", brute-force attack on a cryptographic hashing algorithm HH should have a complexity of about 2n for a hash algorithm with an output length of n bits. That means it takes about 2^(n−1) tries on average to find a colliding message y for a given message x so that H(y)=H(x) while y≠x.However, a birthday attack (e.g. both x and y can be selected arbitrarily, but H(x)=H(y) is of course still required) is supposed to be much faster, and take only 2^(n/2) tries to find a collision.
+In this case the answer is 2^64 tries.
+	b):
+The weak collision resistance property is sometimes also referred to as second pre-image resistance:
+	Given an arbitrary x there exists no x' with x' != x so that h(x) = h(x')
+
+Strong collision resistance on the other hand is defined as:
+	There exist no x and x' with x != x' so that h(x) = h(x')
+It requires a hash value at least twice as long as that required for pre-image resistance, otherwise collisions may be found by a birthday attack.
+
+The obvious difference in their definitions is that for weak collision resistance we assume to be bound to a particular choice of x, whereas in the definition of strong collision resistance we are free to arbitrarily choose our x and x'. As the name implies, it is more difficult to achieve strong collision resistance than weak collision resistance.This is because strong collision resistance implies weak collision resistance, yet, having weak collision resistance does not imply strong collision resistance2.
