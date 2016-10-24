@@ -1,4 +1,4 @@
-import java.io.*;
+//import java.io.*;
 import java.security.*;
 import java.security.spec.*;
 
@@ -11,6 +11,7 @@ public class VerSig {
         if (ver == 3) {
             //VerSig result = new VerSig();
             System.out.println(mod(35,78));
+            hashString("hi there");
         }
     }
 
@@ -25,6 +26,14 @@ public class VerSig {
         }
         int result = b1/a;
         return result;
+    }
+
+    public static void hashString(String a){
+        byte[] bytesOfMessage = a.getBytes("UTF-8");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] thedigest = md.digest(bytesOfMessage);
+        //int temp = thedigest.length;
+        System.out.printf(new String(thedigest,0));
     }
 
 }
