@@ -9,12 +9,12 @@ public class VerSig {
         /* Verify a DSA signature */
         int ver = 3;
         if (ver == 3) {
-            VerSig result = new VerSig();
-            System.out.println(result.mod(35,78));
+            //VerSig result = new VerSig();
+            System.out.println(mod(35,78));
         }
     }
 
-    public int mod(int a, int b){
+    public static int mod(int a, int b){
         //a is the public, b is the mod
         if(a == 0 || b == 0){
                 return 0;
