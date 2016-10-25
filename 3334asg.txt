@@ -15,6 +15,10 @@ Question2:
       V W X Y Z
       
 Question 3:
+
+	1. F(x, key) = x XOR key
+	We could use x times brutal attack to reverse this encryption 
+	2. We assume this encryption is a RSA encryption 
   denote y as the ciphered text
   x = y ^ k3 (mod k2)
   k3 is k1's modular inverse
