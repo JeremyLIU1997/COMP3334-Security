@@ -17,21 +17,23 @@ Question2:
 Question 3:
 
 	1. F(x, key) = x XOR key
-	We could use x times brutal attack to reverse this encryption 
+		We could use x times brutal attack to reverse this encryption 
 	2. We assume this encryption is a RSA encryption 
-  denote y as the ciphered text
-  x = y ^ k3 (mod k2)
-  k3 is k1's modular inverse
+  		denote y as the ciphered text
+  		x = y ^ k3 (mod k2)
+  		k3 is k1's modular inverse
 
 Question 4:
-
+	Answer: 2^56/(10^10*2) ~= 41.68 days
+ 
 Question 5:
 
   
 Question 6:
   a). 29*35 (mod 78) = 1
-  b). 	5*3578 (mod 5963) = 1
-	2266^3578 (mod 5963) = ? math error
+
+  b). 	5*3485 (mod 5808) = 1
+	2266^3485 (mod 5963) = 23
 
 Question 7:
 
