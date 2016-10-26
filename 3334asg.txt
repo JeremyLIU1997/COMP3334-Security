@@ -27,7 +27,7 @@ Question 4:
 	Answer: 2^56/(10^10*2) ~= 41.68 days
  
 Question 5:
-	Answer: The disadvantage is that A EEE DES structure cannot preserve compatibility with DES; a hardware circuit that implemented 3DES (with EDE) could also be used to do DES as well (by, say, making all three subkeys the same).
+	Answer: The advantage of EDE over EEE lies principally in hardware implementations. A EEE DES structure cannot preserve compatibility with DES; a hardware circuit that implemented 3DES (with EDE) could also be used to do DES as well (by, say, making all three subkeys the same). Recalling that originally, only hardware implementations complied with the standard, a chip that implements EDE is "backwards compatible" with single DES, whereas a chip that implements EEE is a completely different cipher.
 
 if we select the first two subkeys to be the same weak key, the second encrypt with the weak key would exactly undo the first, and the plaintext block will be operated on by the third subkey (which is the DES operation we really want).
 
