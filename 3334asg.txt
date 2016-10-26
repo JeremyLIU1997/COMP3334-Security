@@ -27,7 +27,11 @@ Question 4:
 	Answer: 2^56/(10^10*2) ~= 41.68 days
  
 Question 5:
+	Answer: The disadvantage is that A EEE DES structure cannot preserve compatibility with DES; a hardware circuit that implemented 3DES (with EDE) could also be used to do DES as well (by, say, making all three subkeys the same).
 
+if we select the first two subkeys to be the same weak key, the second encrypt with the weak key would exactly undo the first, and the plaintext block will be operated on by the third subkey (which is the DES operation we really want).
+
+Now, if we had a 3DES EEE implementation with three independent subkeys, we could support DES (using the weak key trick), 2 key 3DES (EEE), and 3 key 3DES (EEE). However, that wasn't the only situation they had in mind; they also considered the case where someone implemented 2 key 3DES in hardware (which the first and last subkeys were constrained to be the same). That's one thing EEE mode can't do; we can't use the weak subkey trick with 2 key 3DES (if we make two of the adjacent subkeys the same weak key, then all three subkeys are the same weak key). However, the EDE trick still works.
   
 Question 6:
   a). 29*35 (mod 78) = 1
