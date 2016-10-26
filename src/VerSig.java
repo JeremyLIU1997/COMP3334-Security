@@ -27,9 +27,17 @@ public class VerSig {
         String sig = readFile(sigName);
         String dataContent = readFile(dataName);
 
-
-        System.out.println(sigGeneration(sig,eResult,nResult));
-        System.out.println(hashString(dataContent));
+        BigInteger sigResult = sigGeneration(sig,eResult,nResult);
+        System.out.println("Signature is: " + sigResult);
+        String dataResult = hashString(dataContent);
+        System.out.println("data is: " + dataResult);
+        BigInteger decResult = hex2Decimal(dataResult);
+        System.out.println("data result is : " + decResult);
+        if(sigResult.equals(decResult)){
+            System.out.println("True");
+        }else{
+            System.out.println("False");
+        }
 
     }
 
@@ -75,8 +83,8 @@ public class VerSig {
         String result = hexString.toString();
         //int temp = result.length();
         //String result2 = result.substring(0,result.length() - 2);
-        System.out.println(result);
-        System.out.println(hex2Decimal(result));
+        //System.out.println(result);
+        //System.out.println(hex2Decimal(result));
         return result;
     }
 
@@ -93,22 +101,24 @@ public class VerSig {
         return null;
     }
 
-    public static int hex2Decimal(String s) {
+    public static BigInteger hex2Decimal(String s) {
         String digits = "0123456789ABCDEF";
         s = s.toUpperCase();
-        int val = 0;
+        BigInteger val = new BigInteger("0");
+        BigInteger hex = new BigInteger("16");
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            int d = digits.indexOf(c);
-            val = 16*val + d;
+            BigInteger d = new BigInteger(Integer.toString(digits.indexOf(c)));
+            val = val.multiply(hex);
+            val = val.add(d);
         }
         return val;
     }
 
     public static BigInteger sigGeneration(String sigName, String e, String n){
-        BigInteger sig = new BigInteger(Integer.toString(Integer.parseInt(sigName)));
-        BigInteger p = new BigInteger(Integer.toString(Integer.parseInt(e)));
-        BigInteger g = new BigInteger(Integer.toString(Integer.parseInt(n)));
+        BigInteger sig = new BigInteger(sigName);
+        BigInteger p = new BigInteger(e);
+        BigInteger g = new BigInteger(n);
         BigInteger result = sig.modPow(p,g);
         return result;
     }
