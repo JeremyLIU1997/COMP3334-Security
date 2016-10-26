@@ -2,6 +2,7 @@ import java.io.*;
 import java.security.*;
 import java.util.*;
 import java.security.spec.*;
+import java.math.BigInteger;
 
 public class VerSig {
 
@@ -11,27 +12,25 @@ public class VerSig {
         String fileName = args[0];
         String sigName = args[1];
         String dataName = args[2];
-        String en = null;
-        String n = null;
+        String eResult = null;
+        String nResult = null;
         //VerSig result = new VerSig();
         try {
             BufferedReader fileIn = new BufferedReader(new FileReader(fileName));
 
-            en = fileIn.readLine(); // Reads one line from the file
-            n = fileIn.readLine(); // Reads one line from the file
+            eResult = fileIn.readLine(); // Reads one line from the file
+            nResult = fileIn.readLine(); // Reads one line from the file
             fileIn.close();
         }catch (IOException e){
             e.printStackTrace();
         }
         String sig = readFile(sigName);
         String dataContent = readFile(dataName);
-        System.out.println(en);
-        System.out.println(n);
-        int en1 = Integer.parseInt(en);
-        int en2 = Integer.parseInt(n);
-        System.out.println(mod(en1, en2));
-        hashString(dataContent);
-        System.out.println(29);
+
+
+        System.out.println(sigGeneration(sig,eResult,nResult));
+        System.out.println(hashString(dataContent));
+
     }
 
     public static int mod(int a, int b) {
@@ -47,7 +46,7 @@ public class VerSig {
         return result;
     }
 
-    public static void hashString(String a) {
+    public static String hashString(String a) {
         StringBuffer hexString = new StringBuffer();
         byte[] bytesOfMessage = null;
         try {
@@ -73,7 +72,12 @@ public class VerSig {
                 hexString.append(Integer.toHexString(0xFF & thedigest[i]));
             }
         }
-        System.out.printf(hexString.toString());
+        String result = hexString.toString();
+        //int temp = result.length();
+        //String result2 = result.substring(0,result.length() - 2);
+        System.out.println(result);
+        System.out.println(hex2Decimal(result));
+        return result;
     }
 
     public static String readFile(String file_path){
@@ -88,4 +92,25 @@ public class VerSig {
         }
         return null;
     }
+
+    public static int hex2Decimal(String s) {
+        String digits = "0123456789ABCDEF";
+        s = s.toUpperCase();
+        int val = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int d = digits.indexOf(c);
+            val = 16*val + d;
+        }
+        return val;
+    }
+
+    public static BigInteger sigGeneration(String sigName, String e, String n){
+        BigInteger sig = new BigInteger(Integer.toString(Integer.parseInt(sigName)));
+        BigInteger p = new BigInteger(Integer.toString(Integer.parseInt(e)));
+        BigInteger g = new BigInteger(Integer.toString(Integer.parseInt(n)));
+        BigInteger result = sig.modPow(p,g);
+        return result;
+    }
+
 }
