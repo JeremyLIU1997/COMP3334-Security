@@ -47,15 +47,13 @@ public class VerSig {
 
         BigInteger sigResult = sigGeneration(sig,eResult,nResult);
         System.out.println("Signature is: " + sigResult);
-        String dataResult = hashString(dataContent);
+        String dataResult = computeMD5(dataContent);
         System.out.println("data is: " + dataResult);
-        String dataResult2 = computeMD5(dataContent);
-        System.out.println("data2 is: " + dataResult2);
-        BigInteger decResult = hex2Decimal(dataResult);
-        System.out.println("data result is : " + decResult);
-        BigInteger decResult2 = hex2Decimal(dataResult2);
-        System.out.println("data2 result is : " + decResult2);
-        if(sigResult.equals(decResult)){
+        BigInteger bigInt = new BigInteger(dataResult, 16);
+        //BigInteger decResult = hex2Decimal(dataResult);
+        //System.out.println("data result is : " + decResult);
+        System.out.println("data2 result is : " + bigInt);
+        if(sigResult.equals(bigInt)){
             System.out.println("True");
         }else{
             System.out.println("False");
@@ -169,7 +167,7 @@ public class VerSig {
         }
         return sb.toString();
     }
-
+    /*
     public static String hashString(String a) {
         StringBuffer hexString = new StringBuffer();
         byte[] bytesOfMessage = null;
@@ -202,7 +200,7 @@ public class VerSig {
         //System.out.println(result);
         //System.out.println(hex2Decimal(result));
         return result;
-    }
+    }*/
 
     public static String readFile(String file_path){
         try {
