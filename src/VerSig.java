@@ -8,13 +8,13 @@ public class VerSig {
 
     public static void main(String[] args) {
 
-        /* Verify a DSA signature */
+        /* Verify a RSA signature */
         String fileName = args[0];
         String sigName = args[1];
         String dataName = args[2];
         String eResult = null;
         String nResult = null;
-        //VerSig result = new VerSig();
+
         try {
             BufferedReader fileIn = new BufferedReader(new FileReader(fileName));
 
